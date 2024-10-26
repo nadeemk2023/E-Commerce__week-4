@@ -2,12 +2,14 @@ function renderBooks() {
   const booksWrapper = document.querySelector('.books');
 
   const books = getBooks();
-
-  booksWrapper.innerHTML = `<div class='book'>
+  const booksHtml = books
+    .map(book => {
+      console.log(book);
+      return `<div class='book'>
     <figure class='book__img--wrapper'>
-      <img class='book__img' src="${books[0].url}" alt='' />
+      <img class='book__img' src="${book.url}" alt='${book.title}' />
     </figure>
-    <div class='book__title'>Atomic Habits</div>
+    <div class='book__title'>${book.title}</div>
     <div class='book__ratings'>
       <i class='fas fa-star'></i>
       <i class='fas fa-star'></i>
@@ -16,14 +18,18 @@ function renderBooks() {
       <i class='fas fa-star-half-alt'></i>
     </div>
     <div class='book__price'>
-      <span class='book__price--normal'>$59.95</span> $14.95
+      <span class='book__price--normal'>$${book.originalPrice}</span> $${book.salePrice}
     </div>
   </div>`;
+    })
+    .join('');
+
+  booksWrapper.innerHTML = booksHtml;
 }
 
 setTimeout(() => {
   renderBooks();
-}, 500);
+}, 50);
 
 // FAKE DATA
 function getBooks() {
