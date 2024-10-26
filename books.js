@@ -1,8 +1,11 @@
 function renderBooks() {
   const booksWrapper = document.querySelector('.books');
+
+  const books = getBooks();
+
   booksWrapper.innerHTML = `<div class='book'>
     <figure class='book__img--wrapper'>
-      <img class='book__img' src='assets/atomic habits.jpg' alt='' />
+      <img class='book__img' src="${books[0].url}" alt='' />
     </figure>
     <div class='book__title'>Atomic Habits</div>
     <div class='book__ratings'>
