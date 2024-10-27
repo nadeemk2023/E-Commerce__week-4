@@ -4,7 +4,6 @@ function renderBooks() {
   const books = getBooks();
   const booksHtml = books
     .map(book => {
-      console.log(book);
       return `<div class='book'>
     <figure class='book__img--wrapper'>
       <img class='book__img' src="${book.url}" alt='${book.title}' />
@@ -25,6 +24,10 @@ function renderBooks() {
     .join('');
 
   booksWrapper.innerHTML = booksHtml;
+}
+
+function filterBooks() {
+  console.log(event.target.value);
 }
 
 setTimeout(() => {
