@@ -22,13 +22,20 @@ function renderBooks(filter) {
       ${ratingsHTML(book.rating)}
     </div>
     <div class='book__price'>
-      <span class="book__price--normal">$59.95</span> $14.95
+    ${priceHTML(book.originalPrice, book.salePrice)}
     </div>
   </div>`;
     })
     .join('');
 
   booksWrapper.innerHTML = booksHTML;
+}
+
+function priceHTML(originalPrice, salePrice) {
+  if (salePrice === null) {
+    return `<span class="book__price">$${originalPrice}</span>`;
+  } else
+    return `<span class="book__price--normal">$${originalPrice}</span> $${salePrice}`;
 }
 
 function ratingsHTML(rating) {
