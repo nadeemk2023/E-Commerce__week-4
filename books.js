@@ -9,7 +9,10 @@ function renderBooks(filter) {
         (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice)
     );
   } else if (filter === 'HIGH_TO_LOW') {
-    books.sort((a, b) => b.originalPrice - a.originalPrice);
+    books.sort(
+      (a, b) =>
+        (b.salePrice || b.originalPrice) - (a.salePrice || a.originalPrice)
+    );
   } else if (filter === 'RATING') {
     books.sort((a, b) => b.rating - a.rating);
   }
