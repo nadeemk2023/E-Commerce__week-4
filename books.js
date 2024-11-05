@@ -4,7 +4,10 @@ function renderBooks(filter) {
   const books = getBooks();
 
   if (filter === 'LOW_TO_HIGH') {
-    books.sort((a, b) => a.originalPrice - b.originalPrice);
+    books.sort(
+      (a, b) =>
+        (a.salePrice || a.originalPrice) - (b.salePrice || b.originalPrice)
+    );
   } else if (filter === 'HIGH_TO_LOW') {
     books.sort((a, b) => b.originalPrice - a.originalPrice);
   } else if (filter === 'RATING') {
