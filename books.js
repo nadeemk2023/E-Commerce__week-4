@@ -1,7 +1,9 @@
 async function renderBooks(filter) {
   const booksWrapper = document.querySelector('.books');
 
+  booksWrapper.classList += ' books__loading';
   const books = await getBooks();
+  booksWrapper.classList.remove('books__loading');
 
   if (filter === 'LOW_TO_HIGH') {
     books.sort(
@@ -63,7 +65,7 @@ function filterBooks(event) {
 }
 
 setTimeout(() => {
-  // renderBooks();
+  renderBooks();
 });
 
 // FAKE DATA
